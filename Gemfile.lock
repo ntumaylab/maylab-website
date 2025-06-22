@@ -79,6 +79,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 4.3.2)
   jekyll-paginate-v2 (~> 3.0)
+  sass-embedded
   webrick (~> 1.8)
 
 BUNDLED WITH
