@@ -3,7 +3,7 @@
 
 <div class="card-news {% if layout_type == 'list' %}card-news--list{% else %}card-news--grid{% endif %}">
   <div class="card-news__image">
-    <img src="{{ include.post.image | default: '/assets/images/default-banner.jpg' }}" alt="News image">
+    <img src="{{ include.post.image | default: '/assets/images/default-banner.jpg' | relative_url }}" alt="News image">
   </div>
   <div class="card-news__content">
     <h3 class="card-news__title"><a href="{{ include.post.url }}">{{ include.post.title }}</a></h3>
