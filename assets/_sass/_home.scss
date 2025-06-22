@@ -1,3 +1,92 @@
+.banner {
+  position: relative;
+  margin-top: 70px;
+}
+
+.swiper {
+  width: 100%;
+  height: 400px; /* Swiper 容器的高度 */
+  overflow: hidden; /* 確保內容不會溢出 Swiper 區域 */
+}
+
+.swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100%; /* 關鍵：讓 slide 撐滿 Swiper 容器的高度 */
+  display: flex; /* 確保內容能垂直和水平居中，如果需要的話 */
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+}
+
+.swiper-slide a { /* 確保 <a> 元素也是塊級元素，且撐滿 slide */
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; /* 確保圖片是塊級元素 */
+}
+
+.banner-text {
+  position: absolute;
+  bottom: 15%;
+  left: 10%;
+  color: white;
+  background-color: rgba(13, 124, 102, 0.7);
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 2; /* 確保文字在圖片上方 */
+  max-width: 80%; /* 防止文字過長溢出 */
+  box-sizing: border-box; /* 確保 padding 不會導致溢出 */
+}
+
+/* 如果您有 swiper-button-next 和 swiper-button-prev 的話，也要加上 z-index */
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute; /* 確保是絕對定位 */
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
+  color: white;
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 50%; /* 讓按鈕變圓 */
+  cursor: pointer;
+  z-index: 10; /* 確保在 banner-text 和圖片上方 */
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+/* Swiper Pagination */
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px; /* 調整分頁點位置 */
+    width: 100%;
+    text-align: center;
+    z-index: 10; /* 確保在最上層 */
+}
+
+.swiper-pagination-bullet {
+    background: white; /* 點點的顏色 */
+    opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+    background: #0D7C66; /* 活躍點點的顏色 */
+    opacity: 1;
+}
+
+
 .card-news--grid {
   display: flex;
   flex-direction: column;
