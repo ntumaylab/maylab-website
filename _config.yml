@@ -1,6 +1,6 @@
 # Jekyll site config
 name: MAY Lab
-baseurl: ""
+baseurl: "/maylab-website"
 url: "https://ntumaylab.github.io"
 markdown: kramdown
 sass:
