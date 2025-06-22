@@ -1,91 +1,95 @@
 .banner {
   position: relative;
   margin-top: 70px;
-}
 
-.swiper {
-  width: 100%;
-  height: 400px; /* Swiper 容器的高度 */
-  overflow: hidden; /* 確保內容不會溢出 Swiper 區域 */
-}
+  .swiper {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
 
-.swiper-slide {
-  position: relative;
-  width: 100%;
-  height: 100%; /* 關鍵：讓 slide 撐滿 Swiper 容器的高度 */
-  display: flex; /* 確保內容能垂直和水平居中，如果需要的話 */
-  align-items: center; /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
-}
+  .swiper-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-.swiper-slide a { /* 確保 <a> 元素也是塊級元素，且撐滿 slide */
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
 
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block; /* 確保圖片是塊級元素 */
-}
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-.banner-text {
-  position: absolute;
-  bottom: 15%;
-  left: 10%;
-  color: white;
-  background-color: rgba(13, 124, 102, 0.7);
-  padding: 20px;
-  border-radius: 8px;
-  z-index: 2; /* 確保文字在圖片上方 */
-  max-width: 80%; /* 防止文字過長溢出 */
-  box-sizing: border-box; /* 確保 padding 不會導致溢出 */
-}
+      .banner-text {
+        position: absolute;
+        bottom: 15%;
+        left: 10%;
+        color: white;
+        background-color: rgba(13, 124, 102, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        z-index: 2;
+        max-width: 80%;
+        box-sizing: border-box;
+      }
+    }
+  }
 
-/* 如果您有 swiper-button-next 和 swiper-button-prev 的話，也要加上 z-index */
-.swiper-button-next,
-.swiper-button-prev {
-  position: absolute; /* 確保是絕對定位 */
-  top: 50%;
-  transform: translateY(-50%); /* 垂直居中 */
-  color: white;
-  font-size: 2rem;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  border-radius: 50%; /* 讓按鈕變圓 */
-  cursor: pointer;
-  z-index: 10; /* 確保在 banner-text 和圖片上方 */
-}
+    .slide-left,
+    .slide-right {
+      position: absolute;
+      top: 50%;
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.3);
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 2;
+    }
 
-.swiper-button-next {
-  right: 10px;
-}
+    .slide-left {
+      left: 10px;
+    }
 
-.swiper-button-prev {
-  left: 10px;
-}
+    .slide-right {
+      right: 10px;
+    }
 
-/* Swiper Pagination */
-.swiper-pagination {
+  .swiper-pagination {
     position: absolute;
-    bottom: 10px; /* 調整分頁點位置 */
+    bottom: 10px;
     width: 100%;
     text-align: center;
-    z-index: 10; /* 確保在最上層 */
+    z-index: 10;
+
+    .swiper-pagination-bullet {
+      background: white;
+      opacity: 0.7;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #0D7C66;
+      opacity: 1;
+    }
+  }
 }
 
-.swiper-pagination-bullet {
-    background: white; /* 點點的顏色 */
-    opacity: 0.7;
+// News grid card 样式
+.news-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
-
-.swiper-pagination-bullet-active {
-    background: #0D7C66; /* 活躍點點的顏色 */
-    opacity: 1;
-}
-
 
 .card-news--grid {
   display: flex;
@@ -104,35 +108,29 @@
   .card-news__content {
     padding: 16px;
     text-align: center;
-  }
 
-  .card-news__title {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #251F47;
-  }
+    .card-news__title {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #251F47;
+    }
 
-  .card-news__excerpt {
-    margin: 8px 0;
-    color: #333;
-    font-size: 0.95rem;
-  }
+    .card-news__excerpt {
+      margin: 8px 0;
+      color: #333;
+      font-size: 0.95rem;
+    }
 
-  .card-news__date {
-    font-size: 0.85rem;
-    color: #888;
-  }
+    .card-news__date {
+      font-size: 0.85rem;
+      color: #888;
+    }
 
-  .read-more {
-    display: inline-block;
-    margin-top: 8px;
-    color: #0D7C66;
-    font-weight: bold;
+    .read-more {
+      display: inline-block;
+      margin-top: 8px;
+      color: #0D7C66;
+      font-weight: bold;
+    }
   }
-}
-
-.news-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
 }

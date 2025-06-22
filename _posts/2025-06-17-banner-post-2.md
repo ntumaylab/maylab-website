@@ -2,8 +2,8 @@
 layout: post
 title: "Workshop Recap: Tools for Emotional Resilience"
 date: 2025-06-17
-image: /assets/images/banner-mental.jpg
-banner: /assets/images/banner-mental.jpg
+image: assets/images/banner-mental.jpg
+banner: assets/images/banner-mental.jpg
 category: news
 ---
 

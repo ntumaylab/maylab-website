@@ -2,8 +2,8 @@
 layout: post
 title: "Inside the Lab: Cognitive Behavior Research Updates"
 date: 2025-06-16
-image: /assets/images/banner-cognition.jpg
-banner: /assets/images/banner-cognition.jpg
+image: assets/images/banner-cognition.jpg
+banner: assets/images/banner-cognition.jpg
 category: news
 ---
 

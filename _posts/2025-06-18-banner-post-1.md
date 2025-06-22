@@ -2,8 +2,8 @@
 layout: post
 title: "New Paper on AI and Mental Health"
 date: 2025-06-18
-image: /assets/images/banner-ai.jpg
-banner: /assets/images/banner-ai.jpg
+image: assets/images/banner-ai.jpg
+banner: assets/images/banner-ai.jpg
 category: news
 ---
 
