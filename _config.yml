@@ -11,6 +11,8 @@ sass:
 plugins:
   - jekyll-paginate-v2
 
+permalink: /:categories/:year/:month/:day/:title.html
+
 pagination:
   enabled: true
   per_page: 10

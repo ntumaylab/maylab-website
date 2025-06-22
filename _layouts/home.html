@@ -22,7 +22,7 @@
         <div class="swiper-wrapper">
         {% for post in site.posts limit:3 %}
         <div class="swiper-slide">
-            <a href="{{ post.url }}">
+            <a href="{{ post.url | relative_url }}">
             <img src="{{ post.banner | default: '/assets/images/default-banner.jpg' | relative_url }}" alt="{{ post.title }}" />
             <div class="banner-text">
                 <h1>{{ post.title }}</h1>
