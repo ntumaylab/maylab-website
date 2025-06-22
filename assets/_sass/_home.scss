@@ -85,45 +85,85 @@
 }
 
 // News grid card 样式
-.news-cards {
+.news-preview .news-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-.card-news--grid {
+.news-preview .news-cards .card-news--grid {
   display: flex;
   flex-direction: column;
+  height: 100%;
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
   background: white;
 
+  .card-news__image { /* <-- 新增這個樣式 */
+    width: 100%; /* 確保圖片容器佔滿卡片寬度 */
+    height: 200px; /* <-- 關鍵修正：設定圖片容器的固定高度 (例如 200px) */
+    overflow: hidden; /* <-- 關鍵修正：確保圖片超出部分被裁切 */
+    display: flex; /* 讓圖片在容器內居中，如果圖片尺寸小於容器 */
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px 6px 0 0; /* 保持圖片容器的上部圓角 */
+  }
+
   .card-news__image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    display: block;
     border-radius: 6px 6px 0 0;
   }
 
   .card-news__content {
     padding: 16px;
-    text-align: center;
+    // 移除 text-align: center;
+    display: flex;             // <-- 增加：將內容區塊設置為 Flex 容器
+    flex-direction: column;    // <-- 增加：內容垂直排列
+    align-items: flex-start;   // <-- 增加：所有子元素靠左對齊（標題、內文、日期）
+    flex-grow: 1;
 
     .card-news__title {
       margin: 0;
       font-size: 1.2rem;
       color: #251F47;
+      // 保持靠左，因為父元素已設定 align-items: flex-start;
+      width: 100%; // 確保佔滿寬度，以便其後的 margin-right: auto 生效
+
+      // <-- 關鍵修正2：控制標題行數和刪節號
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* 限制為 2 行 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis; /* 顯示刪節號 */
+      line-height: 1.4em; /* 每行高度，根據字體大小調整 */
+      min-height: calc(2 * 1.4em); /* 確保至少有兩行的高度 */
     }
 
     .card-news__excerpt {
       margin: 8px 0;
       color: #333;
       font-size: 0.95rem;
+      // 保持靠左
+      width: 100%; // 確保佔滿寬度
+      flex-grow: 1;
+
+      // <-- 關鍵修正4：控制摘要行數和刪節號 (可選，根據需求調整)
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* 例如限制為 3 行 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3em;
     }
 
     .card-news__date {
       font-size: 0.85rem;
       color: #888;
+      margin-top: auto; 
     }
 
     .read-more {
@@ -131,6 +171,8 @@
       margin-top: 8px;
       color: #0D7C66;
       font-weight: bold;
+      margin-left: auto; // <-- 關鍵修正：將 read-more 推到最右邊
+      align-self: flex-end;
     }
   }
 }
