@@ -4,6 +4,7 @@ baseurl: ""
 url: "https://ntumaylab.github.io"
 markdown: kramdown
 sass:
+  sass_dir: assets/_sass
   style: compressed
 
 
