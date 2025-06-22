@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | </title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <!-- _includes/header.html -->
+<!-- _includes/header.html -->
+<header class="site-header">
+  <div class="container header-container">
+    <a href="/" class="logo-link">
+      <img src="/assets/images/logo.png" alt="MAY LAB Logo">
+    </a>
+    <nav class="nav-links">
+      <a href="/news/">News</a>
+      <a href="/about.html">Abouts</a>
+      <a href="/values.html">Values</a>
+
+      <div class="dropdown">
+        <a href="#" class="dropbtn">People</a>
+        <div class="dropdown-content">
+          <a href="/people/pi.html">Principal Investigator</a>
+          <a href="/people/team.html">Team Members</a>
+          <a href="/people/collaborators.html">Collaborators</a>
+        </div>
+      </div>
+
+      <a href="/research.html">Research</a>
+      <a href="/publications.html">Publications</a>
+    </nav>
+  </div>
+</header>
+
+
+
+  <main class="page-container">
+
+    <!-- Swiper Banner Section with Jekyll Posts -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <section class="banner">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+        
+        <div class="swiper-slide">
+            <a href="/news/2025/06/18/banner-post-1.html">
+            <img src="/assets/images/banner-ai.jpg" alt="New Paper on AI and Mental Health" />
+            <div class="banner-text">
+                <h1>New Paper on AI and Mental Health</h1>
+                <p>This is a short summary for New Paper on AI and Mental Health. In this post, ...</p>
+            </div>
+            </a>
+        </div>
+        
+        <div class="swiper-slide">
+            <a href="/news/2025/06/17/banner-post-2.html">
+            <img src="/assets/images/banner-mental.jpg" alt="Workshop Recap: Tools for Emotional Resilience" />
+            <div class="banner-text">
+                <h1>Workshop Recap: Tools for Emotional Resilience</h1>
+                <p>This is a short summary for Workshop Recap: Tools for Emotional Resilience. I...</p>
+            </div>
+            </a>
+        </div>
+        
+        <div class="swiper-slide">
+            <a href="/news/2025/06/16/banner-post-3.html">
+            <img src="/assets/images/banner-cognition.jpg" alt="Inside the Lab: Cognitive Behavior Research Updates" />
+            <div class="banner-text">
+                <h1>Inside the Lab: Cognitive Behavior Research Updates</h1>
+                <p>This is a short summary for Inside the Lab: Cognitive Behavior Research Updat...</p>
+            </div>
+            </a>
+        </div>
+        
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- Pagination Dots -->
+        <div class="swiper-pagination"></div>
+    </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+        },
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+        }
+    });
+    </script>
+
+
+
+    <!-- 最新消息區塊 -->
+    <section class="news-preview">
+      <h2>Latest News</h2>
+      <div class="news-cards">
+        
+        
+          <!-- _includes/card-news.html -->
+
+
+<div class="card-news card-news--grid">
+  <div class="card-news__image">
+    <img src="/assets/images/banner-ai.jpg" alt="News image">
+  </div>
+  <div class="card-news__content">
+    <h3 class="card-news__title"><a href="/news/2025/06/18/banner-post-1.html">New Paper on AI and Mental Health</a></h3>
+    <p class="card-news__excerpt">
+      
+        This is a short summary for New Paper on AI and Mental Health. In this post, we discuss exciting ...
+      
+    </p>
+    <p class="card-news__date">June 18, 2025</p>
+    <a href="/news/2025/06/18/banner-post-1.html" class="read-more">Read more</a>
+  </div>
+</div>
+
+        
+          <!-- _includes/card-news.html -->
+
+
+<div class="card-news card-news--grid">
+  <div class="card-news__image">
+    <img src="/assets/images/banner-mental.jpg" alt="News image">
+  </div>
+  <div class="card-news__content">
+    <h3 class="card-news__title"><a href="/news/2025/06/17/banner-post-2.html">Workshop Recap: Tools for Emotional Resilience</a></h3>
+    <p class="card-news__excerpt">
+      
+        This is a short summary for Workshop Recap: Tools for Emotional Resilience. In this post, we disc...
+      
+    </p>
+    <p class="card-news__date">June 17, 2025</p>
+    <a href="/news/2025/06/17/banner-post-2.html" class="read-more">Read more</a>
+  </div>
+</div>
+
+        
+          <!-- _includes/card-news.html -->
+
+
+<div class="card-news card-news--grid">
+  <div class="card-news__image">
+    <img src="/assets/images/banner-cognition.jpg" alt="News image">
+  </div>
+  <div class="card-news__content">
+    <h3 class="card-news__title"><a href="/news/2025/06/16/banner-post-3.html">Inside the Lab: Cognitive Behavior Research Updates</a></h3>
+    <p class="card-news__excerpt">
+      
+        This is a short summary for Inside the Lab: Cognitive Behavior Research Updates. In this post, we...
+      
+    </p>
+    <p class="card-news__date">June 16, 2025</p>
+    <a href="/news/2025/06/16/banner-post-3.html" class="read-more">Read more</a>
+  </div>
+</div>
+
+        
+          <!-- _includes/card-news.html -->
+
+
+<div class="card-news card-news--grid">
+  <div class="card-news__image">
+    <img src="/assets/images/default-banner.jpg" alt="News image">
+  </div>
+  <div class="card-news__content">
+    <h3 class="card-news__title"><a href="/news/2025/06/14/sample-news.html">Sample News Post</a></h3>
+    <p class="card-news__excerpt">
+      
+        This is a sample news post content.
+
+      
+    </p>
+    <p class="card-news__date">June 14, 2025</p>
+    <a href="/news/2025/06/14/sample-news.html" class="read-more">Read more</a>
+  </div>
+</div>
+
+        
+          <!-- _includes/card-news.html -->
+
+
+<div class="card-news card-news--grid">
+  <div class="card-news__image">
+    <img src="/assets/images/default-banner.jpg" alt="News image">
+  </div>
+  <div class="card-news__content">
+    <h3 class="card-news__title"><a href="/news/2025/06/13/sample-news.html">Sample News Post</a></h3>
+    <p class="card-news__excerpt">
+      
+        This is a sample news post content.
+
+      
+    </p>
+    <p class="card-news__date">June 13, 2025</p>
+    <a href="/news/2025/06/13/sample-news.html" class="read-more">Read more</a>
+  </div>
+</div>
+
+        
+          <!-- _includes/card-news.html -->
+
+
+<div class="card-news card-news--grid">
+  <div class="card-news__image">
+    <img src="/assets/images/default-banner.jpg" alt="News image">
+  </div>
+  <div class="card-news__content">
+    <h3 class="card-news__title"><a href="/news/2025/06/12/sample-news.html">Sample News Post</a></h3>
+    <p class="card-news__excerpt">
+      
+        This is a sample news post content.
+
+      
+    </p>
+    <p class="card-news__date">June 12, 2025</p>
+    <a href="/news/2025/06/12/sample-news.html" class="read-more">Read more</a>
+  </div>
+</div>
+
+        
+      </div>
+      <a class="btn secondary" href="/news/">Read All News</a>
+    </section>
+  </main>
+
+  <!-- Footer include -->
+<footer><p>Contact us at contact@maylab.org</p></footer>
+
+</body>
+</html>
