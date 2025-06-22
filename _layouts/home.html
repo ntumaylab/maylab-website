@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  {% include header.html %}
+
+  <main class="page-container">
+
+    <!-- Swiper Banner Section with Jekyll Posts -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <section class="banner">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+        {% for post in site.posts limit:3 %}
+        <div class="swiper-slide">
+            <a href="{{ post.url }}">
+            <img src="{{ post.banner | default: '/assets/images/default-banner.jpg' }}" alt="{{ post.title }}" />
+            <div class="banner-text">
+                <h1>{{ post.title }}</h1>
+                <p>{{ post.excerpt | strip_html | truncate: 80 }}</p>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- Pagination Dots -->
+        <div class="swiper-pagination"></div>
+    </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+        },
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+        }
+    });
+    </script>
+
+
+
+    <!-- 最新消息區塊 -->
+    <section class="news-preview">
+      <h2>Latest News</h2>
+      <div class="news-cards">
+        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+        {% for post in sorted_posts limit:6 %}
+          {% include card-news.html post=post layout="grid" %}
+        {% endfor %}
+      </div>
+      <a class="btn secondary" href="{{ '/news/' | relative_url }}">Read All News</a>
+    </section>
+  </main>
+
+  {% include footer.html %}
+</body>
+</html>

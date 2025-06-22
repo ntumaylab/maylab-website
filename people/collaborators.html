@@ -1,0 +1,12 @@
+---
+layout: page
+title: Collaborators
+---
+
+<section class="collaborators-list">
+  <ul>
+    {% for c in site.data.collaborators %}
+      <li><strong>{{ c.name }}</strong> – {{ c.affiliation }}</li>
+    {% endfor %}
+  </ul>
+</section>

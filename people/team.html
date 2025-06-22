@@ -1,0 +1,15 @@
+---
+layout: page
+title: Team Members
+---
+
+<section class="team-grid">
+  {% for member in site.data.team %}
+    {% assign image_path = '/assets/images/' | append: member.image %}
+    {% include member_card.html 
+       name=member.name 
+       role=member.role 
+       bio=member.bio 
+       image=image_path %}
+  {% endfor %}
+</section>

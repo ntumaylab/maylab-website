@@ -1,0 +1,20 @@
+<!-- _includes/card-news.html -->
+{% assign layout_type = include.layout | default: 'grid' %}
+
+<div class="card-news {% if layout_type == 'list' %}card-news--list{% else %}card-news--grid{% endif %}">
+  <div class="card-news__image">
+    <img src="{{ include.post.image | default: '/assets/images/default-banner.jpg' }}" alt="News image">
+  </div>
+  <div class="card-news__content">
+    <h3 class="card-news__title"><a href="{{ include.post.url }}">{{ include.post.title }}</a></h3>
+    <p class="card-news__excerpt">
+      {% if include.post.excerpt %}
+        {{ include.post.excerpt | strip_html | truncate: 100 }}
+      {% else %}
+        {{ include.post.content | strip_html | truncate: 100 }}
+      {% endif %}
+    </p>
+    <p class="card-news__date">{{ include.post.date | date: "%B %d, %Y" }}</p>
+    <a href="{{ include.post.url }}" class="read-more">Read more</a>
+  </div>
+</div>
