@@ -1,7 +1,105 @@
+/* assets/_sass/_footer.scss */
+
 .site-footer {
-  background: #C9C6EC;
+  background-color: #C9C6EC; 
+  color: #251F47; 
+  padding: 20px 20px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap; /* 允許在小螢幕上換行 */
+  justify-content: space-around; /* 均勻分佈內容 */
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px; /* 各區塊之間的間距 */
+}
+
+.footer-section {
+  flex: 1; /* 讓各區塊彈性伸展 */
+  min-width: 250px; /* 最小寬度，防止在小螢幕下過窄 */
+  padding: 10px;
+
+  h3 {
+    color: #0D7C66; /* 實驗室主題色 */
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #0D7C66;
+    padding-bottom: 5px;
+    display: inline-block; /* 讓底線只在文字下方 */
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: #251F47;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #0D7C66;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: 15px; /* 社交圖標間距 */
+
+    li {
+      margin-bottom: 0; /* 覆蓋 li 的 margin */
+    }
+
+    a {
+      font-size: 1.2rem;
+      &:hover {
+        color: #0D7C66;
+      }
+    }
+  }
+}
+
+.footer-bottom {
   text-align: center;
-  padding: 30px 10px;
-  margin-top: 40px;
-  font-size: 0.9em;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #333333; /* 版權文字顏色 */
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* 小螢幕下垂直堆疊 */
+    align-items: center; /* 居中對齊 */
+  }
+
+  .footer-section {
+    text-align: center;
+    min-width: unset; /* 取消最小寬度限制 */
+    width: 100%; /* 佔滿寬度 */
+    padding: 15px 0;
+
+    h3 {
+      border-bottom: none; /* 小螢幕下移除底線 */
+      padding-bottom: 0;
+    }
+
+    .social-links {
+      justify-content: center; /* 社交圖標居中 */
+    }
+  }
 }

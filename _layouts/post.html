@@ -4,5 +4,20 @@ layout: default
 <article class="post">
   <h1>{{ page.title }}</h1>
   <p class="date">{{ page.date | date: "%B %d, %Y" }}</p>
-  {{ content }}
+
+  <div class="post-content-body"> 
+    {{ content }}
+  </div>
+
+  {% if page.image %} 
+    <div class="post-image"> 
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}"> 
+    </div>
+  {% elsif page.banner %} 
+    <div class="post-image">
+      <img src="{{ page.banner | relative_url }}" alt="{{ page.title }}"> 
+    </div>
+  {% endif %}
+
+
 </article>

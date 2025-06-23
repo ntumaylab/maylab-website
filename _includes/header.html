@@ -1,14 +1,13 @@
 <!-- _includes/header.html -->
-<!-- _includes/header.html -->
 <header class="site-header">
   <div class="container header-container">
-    <a href="/" class="logo-link">
+    <a href="{{ '/' | relative_url }}" class="logo-link">
       <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="MAY LAB Logo">
     </a>
     <nav class="nav-links">
       <a href="{{ '/news/' | relative_url }}">News</a>
-      <a href="/about.html">Abouts</a>
-      <a href="/values.html">Values</a>
+      <a href="{{ '/about.html' | relative_url }}">Abouts</a>
+      <a href="{{ '/values.html' | relative_url }}">Values</a>
 
       <div class="dropdown">
         <a href="#" class="dropbtn">People</a>
@@ -19,8 +18,8 @@
         </div>
       </div>
 
-      <a href="/research.html">Research</a>
-      <a href="/publications.html">Publications</a>
+      <a href="{{ '/research.html' | relative_url }}">Research</a>
+      <a href="{{ '/publications.html' | relative_url }}">Publications</a>
     </nav>
   </div>
 </header>

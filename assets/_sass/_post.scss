@@ -1,0 +1,19 @@
+.post-image {
+    margin-bottom: 20px; /* 圖片下方留白 */
+    text-align: center; /* 圖片居中 */
+}
+
+.post-image img {
+    max-width: 100%; /* 確保圖片不會超出文章寬度 */
+    height: auto; /* 保持圖片比例 */
+    display: block; /* 移除圖片下方的小空白 */
+    margin: 0 auto; /* 圖片水平居中 */
+    border-radius: 8px; /* 可選：圓角 */
+}
+
+.post-content-body {
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: #333;
+    /* 其他內文樣式 */
+}
