@@ -1,26 +1,28 @@
 /* assets/_sass/_footer.scss */
 
 .site-footer {
-  background-color: #C9C6EC; 
-  color: #251F47; 
-  padding: 20px 20px;
+  background-color: #C9C6EC; /* 您的原有淺色背景 */
+  color: #251F47; /* 您的原有深色文字 */
+  padding: 40px 0; /* 使用新版的上下內邊距，左右由 .container 控制 */
   font-size: 0.9rem;
   line-height: 1.6;
 }
 
-.footer-container {
+// 這裡直接針對 .site-footer 內的 .container，取代了原先的獨立 .container 選擇器
+// 因為在 _layouts/default.html 中，footer 的內容現在也被 .container 包裹了
+.site-footer .container {
   display: flex;
   flex-wrap: wrap; /* 允許在小螢幕上換行 */
   justify-content: space-around; /* 均勻分佈內容 */
-  max-width: 1200px;
-  margin: 0 auto;
+  // max-width: 1200px; /* 這個現在由 _base.scss 中的 .container 定義 */
+  // margin: 0 auto; /* 這個現在由 _base.scss 中的 .container 定義 */
   gap: 30px; /* 各區塊之間的間距 */
 }
 
 .footer-section {
   flex: 1; /* 讓各區塊彈性伸展 */
   min-width: 250px; /* 最小寬度，防止在小螢幕下過窄 */
-  padding: 10px;
+  padding: 10px 0; /* 統一為新版的上下內邊距，左右由 .container 控制 */
 
   h3 {
     color: #0D7C66; /* 實驗室主題色 */
@@ -46,12 +48,12 @@
   }
 
   a {
-    color: #251F47;
+    color: #251F47; /* 連結顏色使用您的原有深色文字 */
     text-decoration: none;
     transition: color 0.3s ease;
 
     &:hover {
-      color: #0D7C66;
+      color: #0D7C66; /* 懸停顏色保持主題色 */
     }
   }
 
@@ -74,15 +76,15 @@
 
 .footer-bottom {
   text-align: center;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #333333; /* 版權文字顏色 */
+  margin-top: 30px; /* 統一為新版較大的上邊距 */
+  padding-top: 20px; /* 統一為新版較大的上內邊距 */
+  border-top: 1px solid rgba(37, 31, 71, 0.2); /* 調整為適合淺色背景的深色邊框，稍微透明 */
+  color: #333333; /* 版權文字顏色使用您的原有設定 */
 }
 
 /* 響應式調整 */
 @media (max-width: 768px) {
-  .footer-container {
+  .site-footer .container { /* 修改為針對 .site-footer 內的 .container */
     flex-direction: column; /* 小螢幕下垂直堆疊 */
     align-items: center; /* 居中對齊 */
   }

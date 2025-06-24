@@ -1,0 +1,127 @@
+/* assets/_sass/_page.scss */
+
+.page-section {
+  max-width: 960px; /* 內容最大寬度 */
+  margin: 40px auto; /* 上下邊距，水平居中 */
+  padding: 0 20px; /* 左右內邊距 */
+}
+
+.page-title-group {
+  margin-bottom: 30px;
+  h2 {
+    font-size: 2.2rem;
+    color: #251F47;
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after { /* 底線效果 */
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 80px; /* 底線長度 */
+      height: 4px;
+      background-color: #0D7C66; /* 主題色 */
+      border-radius: 2px;
+    }
+  }
+
+  p.subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+}
+
+.page-content {
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #333;
+
+  h3 {
+    font-size: 1.5rem;
+    color: #0D7C66; /* 次級標題顏色 */
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    color: #251F47;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  ul, ol {
+    margin-bottom: 15px;
+    padding-left: 25px; /* 列表縮排 */
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: #0D7C66;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* 圖片居中並有上下間距 */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  /* 針對特定頁面內容的調整 */
+  &.research-content {
+    .research-project {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed #ccc;
+    }
+    .project-details {
+      margin-left: 20px;
+    }
+  }
+
+  &.publications-content {
+    .publication-item {
+      margin-bottom: 25px;
+      line-height: 1.8;
+      font-size: 1rem;
+
+      a {
+        word-break: break-all; /* 長連結不斷行 */
+      }
+    }
+  }
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .page-section {
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .page-title-group {
+    h2 {
+      font-size: 1.8rem;
+    }
+  }
+
+  .page-content {
+    font-size: 1rem;
+  }
+}

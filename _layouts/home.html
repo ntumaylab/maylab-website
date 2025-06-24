@@ -71,7 +71,9 @@
           {% include card-news.html post=post layout="grid" %}
         {% endfor %}
       </div>
-      <a class="btn secondary" href="{{ '/news/' | relative_url }}">Read All News</a>
+      <div class="read-all-news-container"> 
+      <a href="{{ '/news/' | relative_url }}" class="read-all-news-button">Read More News</a>
+      </div>
     </section>
   </main>
 

@@ -70,3 +70,50 @@
     transform: translateY(-2px);
     transition: all 0.3s ease;
 }
+
+/* 分頁樣式 */
+.pagination {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.8em;
+
+  a, span {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 0 5px;
+    border: 1px solid #0D7C66;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #0D7C66;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: #0D7C66;
+      color: #fff;
+    }
+  }
+
+  .current {
+    background-color: #0D7C66;
+    color: #fff;
+    font-weight: bold;
+    cursor: default;
+  }
+
+  .prev, .next {
+    font-weight: bold;
+  }
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .pagination {
+    margin-top: 30px;
+    font-size: 1rem;
+
+    a, span {
+      padding: 6px 12px;
+      margin: 0 3px;
+    }
+  }
+}

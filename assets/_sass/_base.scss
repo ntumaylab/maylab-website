@@ -1,153 +1,49 @@
+/* assets/_sass/_base.scss */
+
+
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif; /* 保留您原有的字體設定 */
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-}
-a {
-  color: #251F47;
-  text-decoration: none;
-}
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px;
+  line-height: 1.6; /* 預設行高 */
+  background-color: #f0f2f5; /* 輕微的背景色，讓內容區塊更突出 */
+  color: #333; /* 預設文字顏色 */
 }
 
+a {
+  color: #0D7C66; /* 連結顏色統一為主題色 */
+  text-decoration: none; /* 預設不帶下劃線 */
+
+  &:hover {
+    text-decoration: none; 
+  }
+}
+
+/* ============== 通用容器樣式 ============== */
+
+.container {
+  max-width: 1200px; /* 統一的最大內容寬度，比你原本的1100px略寬，與我之前的建議一致 */
+  margin: 0 auto; /* 水平居中 */
+  padding: 0 20px; /* 左右內邊距，防止內容貼邊 */
+
+  @media (max-width: 768px) {
+    padding: 0 15px; /* 小螢幕下左右內邊距可以稍微縮小 */
+  }
+}
+
+/* ============== 頁面主內容區域樣式 (承載 {{ content }} 的容器) ============== */
 
 .page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px; /* 左右留白 */
+  /* 這個 class 已經存在於 _layouts/default.html，它是包裹實際頁面內容的容器。
+     它的最大寬度現在由其內部的 .container 控制，所以自身的 max-width 和 margin auto 可以移除。 */
+  padding-top: 20px; /* 與 header 保持距離 */
+  padding-bottom: 50px; /* 與 footer 保持距離 */
+
+  /* 不需要在這裡設定 max-width 和 margin: auto;
+     因為我們在 _layouts/default.html 中已經將 {{ content }} 包裹在了一個 .container 裡，
+     所以實際的內容寬度由 .container 控制。
+     如果你需要 .page-container 有背景色或其他視覺效果，可以在這裡添加，
+     但它不應該控制內容的水平居中和最大寬度。
+  */
 }
 
-
-
-
-/* assets/_sass/_page.scss */
-
-.page-section {
-  max-width: 960px; /* 內容最大寬度 */
-  margin: 40px auto; /* 上下邊距，水平居中 */
-  padding: 0 20px; /* 左右內邊距 */
-}
-
-.page-title-group {
-  margin-bottom: 30px;
-  h2 {
-    font-size: 2.2rem;
-    color: #251F47;
-    margin-bottom: 10px;
-    position: relative;
-    padding-bottom: 10px;
-
-    &::after { /* 底線效果 */
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 80px; /* 底線長度 */
-      height: 4px;
-      background-color: #0D7C66; /* 主題色 */
-      border-radius: 2px;
-    }
-  }
-
-  p.subtitle {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.5;
-  }
-}
-
-.page-content {
-  line-height: 1.7;
-  font-size: 1.05rem;
-  color: #333;
-
-  h3 {
-    font-size: 1.5rem;
-    color: #0D7C66; /* 次級標題顏色 */
-    margin-top: 30px;
-    margin-bottom: 15px;
-  }
-
-  h4 {
-    font-size: 1.2rem;
-    color: #251F47;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  p {
-    margin-bottom: 15px;
-  }
-
-  ul, ol {
-    margin-bottom: 15px;
-    padding-left: 25px; /* 列表縮排 */
-  }
-
-  li {
-    margin-bottom: 8px;
-  }
-
-  a {
-    color: #0D7C66;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto; /* 圖片居中並有上下間距 */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-
-  /* 針對特定頁面內容的調整 */
-  &.research-content {
-    .research-project {
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px dashed #ccc;
-    }
-    .project-details {
-      margin-left: 20px;
-    }
-  }
-
-  &.publications-content {
-    .publication-item {
-      margin-bottom: 25px;
-      line-height: 1.8;
-      font-size: 1rem;
-
-      a {
-        word-break: break-all; /* 長連結不斷行 */
-      }
-    }
-  }
-}
-
-/* 響應式調整 */
-@media (max-width: 768px) {
-  .page-section {
-    margin: 20px auto;
-    padding: 0 15px;
-  }
-
-  .page-title-group {
-    h2 {
-      font-size: 1.8rem;
-    }
-  }
-
-  .page-content {
-    font-size: 1rem;
-  }
-}

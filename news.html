@@ -8,34 +8,35 @@ pagination:
   category: news
 ---
 
-<section class="news-page">
-  <h2>All News</h2>
-  <div class="news-cards">
-    {% for post in paginator.posts %}
-      {% include card-news.html post=post layout="list" %}
-    {% endfor %}
+<section class="page-section"> 
+  <div class="page-title-group"> 
+    <h2>News</h2> 
   </div>
 
-  <!-- 分頁區塊 -->
-  <div class="pagination">
-    {% if paginator.previous_page %}
-      {{ paginator.previous_page_path | relative_url }}
-      <a href="{{ paginator.previous_page_path }}" class="prev">← Previous</a>
-    {% endif %}
+  <div class="page-content"> 
+    <div class="news-cards">
+      {% for post in paginator.posts %}
+        {% include card-news.html post=post layout="list" %}
+      {% endfor %}
+    </div>
 
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
-        {{ paginator.paginate_path | replace: ':num', page | relative_url }}
-        <span class="current">{{ page }}</span>
-      {% else %}
-        <a href="{{ paginator.paginate_path | replace: ':num', page }}">{{ page }}</a>
+    <div class="pagination">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="prev">← Previous</a>
       {% endif %}
-    {% endfor %}
 
-    {% if paginator.next_page %}
-      {{ paginator.next_page_path | relative_url }}
-      <a href="{{ paginator.next_page_path }}" class="next">Next →</a>
-    {% endif %}
-  </div>
-</section>
+      {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+          <span class="current">{{ page }}</span>
+        {% else %}
+          <a href="{{ paginator.paginate_path | replace: ':num', page | relative_url }}">{{ page }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}" class="next">Next →</a>
+      {% endif %}
+    </div>
+  </div> 
+</section> 
 

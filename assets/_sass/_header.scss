@@ -1,9 +1,12 @@
 .site-header {
   background-color: #C9C6EC;
   padding: 16px 0;
+  position: sticky; /* 粘性導航欄 */
+  top: 0;
+  z-index: 1000; /* 確保在其他內容之上 */
 }
 
-.header-container {
+.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,4 +84,21 @@
 }
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+@media (max-width: 768px) {
+  .site-header .container {
+    flex-wrap: wrap; /* 允許項目換行 */
+    justify-content: center; /* 居中對齊 */
+  }
+
+  .logo-link {
+    margin-bottom: 10px; /* 在小螢幕上 logo 下方留一些空間 */
+  }
+
+  .nav-links {
+    width: 100%; /* 導航連結佔滿整行 */
+    justify-content: center; /* 導航連結居中 */
+    gap: 15px; /* 縮小間距 */
+  }
 }

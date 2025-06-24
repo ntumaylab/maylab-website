@@ -1,4 +1,7 @@
 <!-- Head include -->
 <meta charset="UTF-8">
-<title>{{ page.title }} | MAY Lab</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title | default: site.name }} {% if page.title %} | {{ site.name }}{% endif %}</title> 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">

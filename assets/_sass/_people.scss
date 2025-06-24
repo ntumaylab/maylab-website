@@ -24,16 +24,26 @@
   margin-bottom: 12px;
 }
 
+.collaborators-list {
+  width: 100%; /* 確保佔滿父容器寬度 */
+  text-align: left; /* 顯式設定文本靠左對齊 */
+  margin-left: 0; /* 確保沒有左邊距 */
+  margin-right: 0; /* 確保沒有右邊距 */
+}
+
 .collaborators-list ul {
   list-style-type: none;
   padding: 0;
   margin-top: 24px;
+  text-align: left; 
 }
+
 .collaborators-list li {
   padding: 12px 0;
   border-bottom: 1px solid #ddd;
   font-size: 16px;
   color: #251F47;
+  text-align: left; 
 }
 
 .pi-profile {
