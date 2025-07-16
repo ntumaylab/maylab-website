@@ -7,32 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <!-- _includes/header.html -->
-<header class="site-header">
+  <header class="site-header">
   <div class="container">
     <a href="/maylab-website/" class="logo-link">
       <img src="/maylab-website/assets/images/logo.png" alt="MAY LAB Logo">
     </a>
+
+    <!-- 漢堡按鈕 -->
+    <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+
     <nav class="nav-links">
       <a href="/maylab-website/news/">News</a>
       <a href="/maylab-website/about.html">Abouts</a>
       <a href="/maylab-website/values.html">Values</a>
-
-      <div class="dropdown">
-        <a href="#" class="dropbtn">People</a>
-        <div class="dropdown-content">
+      <div class="dropdown mobile-dropdown">
+        <button type="button" class="dropbtn" onclick="toggleSubmenu()">People</button>
+        <div class="dropdown-content mobile-submenu">
           <a href="/maylab-website/people/pi.html">Principal Investigator</a>
           <a href="/maylab-website/people/team.html">Team Members</a>
           <a href="/maylab-website/people/collaborators.html">Collaborators</a>
         </div>
       </div>
-
       <a href="/maylab-website/research.html">Research</a>
       <a href="/maylab-website/publications.html">Publications</a>
     </nav>
   </div>
 </header>
-
 
 
   <main class="page-container">
@@ -109,12 +109,15 @@
 
 
     <!-- 最新消息區塊 -->
-    <section class="news-preview">
-      <h2>Latest News</h2>
-      <div class="news-cards">
-        
-        
-          <!-- _includes/card-news.html -->
+    <div class="container">
+      <section class="news-preview">
+        <div class="page-title-group">
+          <h2>Latest News</h2>
+        </div>
+        <div class="news-cards">
+          
+          
+            <!-- _includes/card-news.html -->
 
 
 
@@ -136,8 +139,8 @@
       </div>
   </div>
 </a> 
-        
-          <!-- _includes/card-news.html -->
+          
+            <!-- _includes/card-news.html -->
 
 
 
@@ -159,8 +162,8 @@
       </div>
   </div>
 </a> 
-        
-          <!-- _includes/card-news.html -->
+          
+            <!-- _includes/card-news.html -->
 
 
 
@@ -182,8 +185,8 @@
       </div>
   </div>
 </a> 
-        
-          <!-- _includes/card-news.html -->
+          
+            <!-- _includes/card-news.html -->
 
 
 
@@ -206,12 +209,13 @@
       </div>
   </div>
 </a> 
-        
-      </div>
-      <div class="read-all-news-container"> 
-      <a href="/maylab-website/news/" class="read-all-news-button">Read More News</a>
-      </div>
-    </section>
+          
+        </div>
+        <div class="read-all-news-container"> 
+        <a href="/maylab-website/news/" class="read-all-news-button">Read More News</a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <!-- Footer include -->
@@ -239,6 +243,36 @@
     <p>Powered by Jekyll & GitHub Pages</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const submenu = document.querySelector('.mobile-submenu');
+    const peopleToggle = document.querySelector('.dropbtn');
+
+    // 主選單切換（漢堡）
+    menuToggle?.addEventListener('click', function () {
+      navLinks.classList.toggle('show');
+    });
+
+    // People 子選單切換
+    peopleToggle?.addEventListener('click', function (e) {
+      e.stopPropagation(); // 防止點擊同時觸發 document click
+      submenu?.classList.toggle('show');
+    });
+
+    // 點擊其他區域自動收合 People 子選單
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.mobile-dropdown')) {
+        submenu?.classList.remove('show');
+      }
+    });
+  });
+</script>
+
+
+
 
 </body>
 </html>

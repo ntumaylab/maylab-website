@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-Hant"> 
+<html lang="zh-Hant">
 <head>
-  <!-- Head include -->
+  <!-- Head include -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Values  | MAY Lab</title> 
@@ -9,41 +9,45 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="icon" type="image/png" href="/maylab-website/assets/images/favicon.png">
 </head>
-<body>
-  <!-- _includes/header.html -->
-<header class="site-header">
+<body class="layout-default">
+  <header class="site-header">
   <div class="container">
     <a href="/maylab-website/" class="logo-link">
       <img src="/maylab-website/assets/images/logo.png" alt="MAY LAB Logo">
     </a>
+
+    <!-- 漢堡按鈕 -->
+    <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+
     <nav class="nav-links">
       <a href="/maylab-website/news/">News</a>
       <a href="/maylab-website/about.html">Abouts</a>
       <a href="/maylab-website/values.html">Values</a>
-
-      <div class="dropdown">
-        <a href="#" class="dropbtn">People</a>
-        <div class="dropdown-content">
+      <div class="dropdown mobile-dropdown">
+        <button type="button" class="dropbtn" onclick="toggleSubmenu()">People</button>
+        <div class="dropdown-content mobile-submenu">
           <a href="/maylab-website/people/pi.html">Principal Investigator</a>
           <a href="/maylab-website/people/team.html">Team Members</a>
           <a href="/maylab-website/people/collaborators.html">Collaborators</a>
         </div>
       </div>
-
       <a href="/maylab-website/research.html">Research</a>
       <a href="/maylab-website/publications.html">Publications</a>
     </nav>
   </div>
 </header>
 
+  <main class="page-container">
+    <div class="container">
+      <section class="page-section"> 
+  <div class="page-title-group"> 
+    <h2>Our Values</h2>
+    
+  </div>
 
-
-  <main class="page-container">
-    <div class="container"> 
-      <article class="page-contenter">
-  <section class="page-section">
+  <div class="page-content"> 
+    <section class="page-section">
   <div class="page-title-group">
-    <h2>我們的價值觀</h2>
     <p class="subtitle">MAY Lab 的核心信念，引導著我們的研究與合作。</p>
   </div>
 
@@ -61,13 +65,13 @@
     </p>
   </div>
 </section>
-</article>
+  </div>
+</section>
 
 
-    </div>
-  </main>
-
-  <!-- Footer include -->
+    </div>
+  </main>
+  <!-- Footer include -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-section footer-about">
@@ -92,6 +96,36 @@
     <p>Powered by Jekyll & GitHub Pages</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const submenu = document.querySelector('.mobile-submenu');
+    const peopleToggle = document.querySelector('.dropbtn');
+
+    // 主選單切換（漢堡）
+    menuToggle?.addEventListener('click', function () {
+      navLinks.classList.toggle('show');
+    });
+
+    // People 子選單切換
+    peopleToggle?.addEventListener('click', function (e) {
+      e.stopPropagation(); // 防止點擊同時觸發 document click
+      submenu?.classList.toggle('show');
+    });
+
+    // 點擊其他區域自動收合 People 子選單
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.mobile-dropdown')) {
+        submenu?.classList.remove('show');
+      }
+    });
+  });
+</script>
+
+
+
 
 </body>
 </html>
