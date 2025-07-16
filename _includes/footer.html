@@ -23,3 +23,33 @@
     <p>Powered by Jekyll & GitHub Pages</p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const submenu = document.querySelector('.mobile-submenu');
+    const peopleToggle = document.querySelector('.dropbtn');
+
+    // 主選單切換（漢堡）
+    menuToggle?.addEventListener('click', function () {
+      navLinks.classList.toggle('show');
+    });
+
+    // People 子選單切換
+    peopleToggle?.addEventListener('click', function (e) {
+      e.stopPropagation(); // 防止點擊同時觸發 document click
+      submenu?.classList.toggle('show');
+    });
+
+    // 點擊其他區域自動收合 People 子選單
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.mobile-dropdown')) {
+        submenu?.classList.remove('show');
+      }
+    });
+  });
+</script>
+
+
+

@@ -63,18 +63,22 @@
 
 
     <!-- 最新消息區塊 -->
-    <section class="news-preview">
-      <h2>Latest News</h2>
-      <div class="news-cards">
-        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-        {% for post in sorted_posts limit:6 %}
-          {% include card-news.html post=post layout="grid" %}
-        {% endfor %}
-      </div>
-      <div class="read-all-news-container"> 
-      <a href="{{ '/news/' | relative_url }}" class="read-all-news-button">Read More News</a>
-      </div>
-    </section>
+    <div class="container">
+      <section class="news-preview">
+        <div class="page-title-group">
+          <h2>Latest News</h2>
+        </div>
+        <div class="news-cards">
+          {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+          {% for post in sorted_posts limit:6 %}
+            {% include card-news.html post=post layout="grid" %}
+          {% endfor %}
+        </div>
+        <div class="read-all-news-container"> 
+        <a href="{{ '/news/' | relative_url }}" class="read-all-news-button">Read More News</a>
+        </div>
+      </section>
+    </div>
   </main>
 
   {% include footer.html %}

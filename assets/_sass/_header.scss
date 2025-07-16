@@ -1,3 +1,4 @@
+
 .site-header {
   background-color: #C9C6EC;
   padding: 16px 0;
@@ -100,5 +101,90 @@
     width: 100%; /* 導航連結佔滿整行 */
     justify-content: center; /* 導航連結居中 */
     gap: 15px; /* 縮小間距 */
+  }
+}
+
+/* 漢堡按鈕預設隱藏，手機顯示 */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #251F47;
+  cursor: pointer;
+}
+
+
+
+
+/* === 手機選單響應式設計 === */
+@media (max-width: 768px) {
+  /* 導覽列本體樣式 */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #C9C6EC;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 999;
+    width: auto;
+    max-width: 300px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* 漢堡按鈕 */
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #251F47;
+    cursor: pointer;
+  }
+
+  /* dropdown 子選單調整（取消桌面版右側浮出） */
+  .dropdown-content {
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 手機版 People 主按鈕 */
+  .dropdown .dropbtn {
+    background: none;
+    border: none;
+    text-align: left;
+    font-weight: bold;
+    padding: 0;
+    color: #251F47;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* 手機版下拉子選單樣式 */
+  .mobile-submenu {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+  }
+
+  .mobile-submenu a {
+    text-decoration: none;
+    color: #251F47;
+  }
+
+  .mobile-submenu.show {
+    display: flex;
   }
 }

@@ -2,7 +2,16 @@
 layout: default
 title: Page Title
 ---
-<article class="page-contenter">
-  {{ content }}
-</article>
+<section class="page-section"> 
+  <div class="page-title-group"> 
+    <h2>{{ page.title }}</h2>
+    {% if page.subtitle %}
+      <p class="subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  <div class="page-content"> 
+    {{ content }}
+  </div>
+</section>
 

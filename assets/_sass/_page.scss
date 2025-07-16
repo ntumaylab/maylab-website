@@ -2,7 +2,8 @@
 
 .page-section {
   max-width: 960px; /* 內容最大寬度 */
-  margin: 40px auto; /* 上下邊距，水平居中 */
+  margin-top: 0;   /* 將上邊距設為 0 */
+  margin-bottom: 40px; /* 保持下邊距 */
   padding: 0 20px; /* 左右內邊距 */
 }
 

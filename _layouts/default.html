@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-Hant"> 
+<html lang="zh-Hant">
 <head>
-  {% include head.html %}
+  {% include head.html %}
 </head>
-<body>
-  {% include header.html %}
-
-  <main class="page-container">
-    <div class="container"> 
-      {{ content }}
-    </div>
-  </main>
-
-  {% include footer.html %}
+<body class="layout-default">
+  {% include header.html %}
+  <main class="page-container">
+    <div class="container">
+      {{ content }}
+    </div>
+  </main>
+  {% include footer.html %}
 </body>
 </html>

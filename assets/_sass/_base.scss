@@ -1,18 +1,17 @@
 /* assets/_sass/_base.scss */
 
-
 body {
-  font-family: 'Noto Sans', sans-serif; /* 保留您原有的字體設定 */
+  font-family: 'Noto Sans', sans-serif; 
   margin: 0;
   padding: 0;
-  line-height: 1.6; /* 預設行高 */
-  background-color: #f0f2f5; /* 輕微的背景色，讓內容區塊更突出 */
-  color: #333; /* 預設文字顏色 */
+  line-height: 1.6; 
+  background-color: #f0f2f5; 
+  color: #333; 
 }
 
 a {
-  color: #0D7C66; /* 連結顏色統一為主題色 */
-  text-decoration: none; /* 預設不帶下劃線 */
+  color: #0D7C66;
+  text-decoration: none; 
 
   &:hover {
     text-decoration: none; 
@@ -22,28 +21,75 @@ a {
 /* ============== 通用容器樣式 ============== */
 
 .container {
-  max-width: 1200px; /* 統一的最大內容寬度，比你原本的1100px略寬，與我之前的建議一致 */
-  margin: 0 auto; /* 水平居中 */
-  padding: 0 20px; /* 左右內邊距，防止內容貼邊 */
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 0 20px; 
 
   @media (max-width: 768px) {
-    padding: 0 15px; /* 小螢幕下左右內邊距可以稍微縮小 */
+    padding: 0 15px; 
   }
 }
 
 /* ============== 頁面主內容區域樣式 (承載 {{ content }} 的容器) ============== */
 
 .page-container {
-  /* 這個 class 已經存在於 _layouts/default.html，它是包裹實際頁面內容的容器。
-     它的最大寬度現在由其內部的 .container 控制，所以自身的 max-width 和 margin auto 可以移除。 */
-  padding-top: 20px; /* 與 header 保持距離 */
-  padding-bottom: 50px; /* 與 footer 保持距離 */
-
-  /* 不需要在這裡設定 max-width 和 margin: auto;
-     因為我們在 _layouts/default.html 中已經將 {{ content }} 包裹在了一個 .container 裡，
-     所以實際的內容寬度由 .container 控制。
-     如果你需要 .page-container 有背景色或其他視覺效果，可以在這裡添加，
-     但它不應該控制內容的水平居中和最大寬度。
-  */
+  // 移除固定的 padding-top，讓 header 的 sticky 定位正常工作
+  padding-top: 20px; // 給一點基本間距
+  padding-bottom: 50px; 
 }
 
+// 針對首頁的特殊處理
+.layout-home .page-container {
+  padding-top: 0; // 首頁不需要額外的 padding-top，banner 會自己處理
+}
+
+.page-section {
+  max-width: 960px;
+  margin-top: 20px; // 給分頁一些頂部間距
+  margin-bottom: 40px; 
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.page-title-group {
+  margin-bottom: 30px;
+  h2 {
+    font-size: 2.2rem;
+    color: #251F47;
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after { 
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 80px; 
+      height: 4px;
+      background-color: #0D7C66; 
+      border-radius: 2px;
+    }
+  }
+
+  p.subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+}
+
+.page-content {
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .page-section {
+    margin-top: 10px; 
+    margin-bottom: 20px; 
+    padding: 0 15px;
+  }
+}
