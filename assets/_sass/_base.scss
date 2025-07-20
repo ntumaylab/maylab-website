@@ -1,5 +1,14 @@
 /* assets/_sass/_base.scss */
 
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: 'Noto Sans', sans-serif; 
   margin: 0;
@@ -71,12 +80,31 @@ a {
       background-color: #0D7C66; 
       border-radius: 2px;
     }
+    
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+      text-align: center;
+      
+      &::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 1.5rem;
+    }
   }
 
   p.subtitle {
     font-size: 1.1rem;
     color: #555;
     line-height: 1.5;
+    
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: 1rem;
+    }
   }
 }
 
@@ -91,5 +119,19 @@ a {
     margin-top: 10px; 
     margin-bottom: 20px; 
     padding: 0 15px;
+  }
+  
+  .page-title-group {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .page-section {
+    padding: 0 10px;
   }
 }

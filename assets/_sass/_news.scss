@@ -1,5 +1,9 @@
 .news-page {
   padding: 40px 20px;
+  
+  @media (max-width: 768px) {
+    padding: 20px 15px;
+  }
 }
 
 .news-cards {
@@ -18,9 +22,21 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 16px;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 
   .card-news__image {
     flex: 0 0 200px;
+    
+    @media (max-width: 768px) {
+      flex: none;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
   }
 
   .card-news__image img {
@@ -37,12 +53,20 @@
     margin: 0;
     font-size: 1.25rem;
     color: #251F47;
+    
+    @media (max-width: 576px) {
+      font-size: 1.1rem;
+    }
   }
 
   .card-news__excerpt {
     margin: 8px 0;
     color: #333;
     font-size: 0.95rem;
+    
+    @media (max-width: 576px) {
+      font-size: 0.9rem;
+    }
   }
 
   .card-news__date {
@@ -112,8 +136,19 @@
     font-size: 1rem;
 
     a, span {
-      padding: 6px 12px;
+      padding: 8px 12px;
       margin: 0 3px;
+      min-width: 40px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .pagination {
+    a, span {
+      padding: 6px 8px;
+      margin: 0 2px;
+      font-size: 0.9rem;
     }
   }
 }
