@@ -23,6 +23,10 @@
   flex: 1; /* 讓各區塊彈性伸展 */
   min-width: 250px; /* 最小寬度，防止在小螢幕下過窄 */
   padding: 10px 0; /* 統一為新版的上下內邊距，左右由 .container 控制 */
+  
+  @media (max-width: 480px) {
+    min-width: 100%;
+  }
 
   h3 {
     color: #0D7C66; /* 實驗室主題色 */
