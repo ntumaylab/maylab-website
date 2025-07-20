@@ -1,10 +1,10 @@
 ---
 ---
-@import "base";
-@import "page";
-@import "header";
-@import "footer";
-@import "home";
-@import "people";
-@import "news";
-@import "post";
+@use "../_sass/base";
+@use "../_sass/page";
+@use "../_sass/header";
+@use "../_sass/footer";
+@use "../_sass/home";
+@use "../_sass/people";
+@use "../_sass/news";
+@use "../_sass/post";
