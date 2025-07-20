@@ -29,12 +29,13 @@
 .nav-links {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 .nav-links a {
   color: #251F47;
   font-weight: bold;
   text-decoration: none;
-  padding: 16px 24px;
+  padding: 16px 20px;
   font-size: 16px;
   line-height: 1;
 }
@@ -51,7 +52,7 @@
   align-items: center;
 }
 .dropbtn {
-  padding: 16px 0;
+  padding: 16px 20px;
   font-weight: bold;
   font-size: 16px;
   line-height: 1;
