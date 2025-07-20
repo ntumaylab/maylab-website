@@ -49,7 +49,7 @@
         e.stopPropagation();
         
         // 只在手機版處理
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 850) {
           dropdownContent.classList.toggle('show');
         }
       });
@@ -65,7 +65,7 @@
 
     // 視窗大小改變時重置選單狀態
     window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 850) {
         if (navLinks) navLinks.classList.remove('show');
         if (dropdownContent) dropdownContent.classList.remove('show');
       }
