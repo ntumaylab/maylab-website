@@ -42,15 +42,20 @@
       });
     }
 
-    // People 子選單切換（僅手機版）
+    // People 子選單切換（手機版和觸控裝置）
     if (peopleToggle && dropdownContent) {
       peopleToggle.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
         
-        // 只在手機版處理
         if (window.innerWidth <= 850) {
           dropdownContent.classList.toggle('show');
+        } else {
+          if (dropdownContent.style.display === 'block') {
+            dropdownContent.style.display = 'none';
+          } else {
+            dropdownContent.style.display = 'block';
+          }
         }
       });
     }
@@ -59,7 +64,10 @@
     document.addEventListener('click', function (e) {
       if (!e.target.closest('.site-header')) {
         if (navLinks) navLinks.classList.remove('show');
-        if (dropdownContent) dropdownContent.classList.remove('show');
+        if (dropdownContent) {
+          dropdownContent.classList.remove('show');
+          dropdownContent.style.display = 'none';
+        }
       }
     });
 
@@ -67,7 +75,10 @@
     window.addEventListener('resize', function() {
       if (window.innerWidth > 850) {
         if (navLinks) navLinks.classList.remove('show');
-        if (dropdownContent) dropdownContent.classList.remove('show');
+        if (dropdownContent) {
+          dropdownContent.classList.remove('show');
+          dropdownContent.style.display = '';
+        }
       }
     });
   });
