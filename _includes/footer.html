@@ -28,24 +28,57 @@
   document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const submenu = document.querySelector('.mobile-submenu');
     const peopleToggle = document.querySelector('.dropbtn');
+    const dropdownContent = document.querySelector('.dropdown-content');
 
     // 主選單切換（漢堡）
-    menuToggle?.addEventListener('click', function () {
-      navLinks.classList.toggle('show');
-    });
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', function () {
+        navLinks.classList.toggle('show');
+        // 關閉主選單時同時關閉子選單
+        if (!navLinks.classList.contains('show') && dropdownContent) {
+          dropdownContent.classList.remove('show');
+        }
+      });
+    }
 
-    // People 子選單切換
-    peopleToggle?.addEventListener('click', function (e) {
-      e.stopPropagation(); // 防止點擊同時觸發 document click
-      submenu?.classList.toggle('show');
-    });
+    // People 子選單切換（手機版和觸控裝置）
+    if (peopleToggle && dropdownContent) {
+      peopleToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (window.innerWidth <= 850) {
+          dropdownContent.classList.toggle('show');
+        } else {
+          if (dropdownContent.style.display === 'block') {
+            dropdownContent.style.display = 'none';
+          } else {
+            dropdownContent.style.display = 'block';
+          }
+        }
+      });
+    }
 
-    // 點擊其他區域自動收合 People 子選單
+    // 點擊選單外區域關閉選單
     document.addEventListener('click', function (e) {
-      if (!e.target.closest('.mobile-dropdown')) {
-        submenu?.classList.remove('show');
+      if (!e.target.closest('.site-header')) {
+        if (navLinks) navLinks.classList.remove('show');
+        if (dropdownContent) {
+          dropdownContent.classList.remove('show');
+          dropdownContent.style.display = 'none';
+        }
+      }
+    });
+
+    // 視窗大小改變時重置選單狀態
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 850) {
+        if (navLinks) navLinks.classList.remove('show');
+        if (dropdownContent) {
+          dropdownContent.classList.remove('show');
+          dropdownContent.style.display = '';
+        }
       }
     });
   });

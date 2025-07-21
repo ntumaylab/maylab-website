@@ -29,12 +29,13 @@
 .nav-links {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 .nav-links a {
   color: #251F47;
   font-weight: bold;
   text-decoration: none;
-  padding: 16px 24px;
+  padding: 16px 20px;
   font-size: 16px;
   line-height: 1;
 }
@@ -51,15 +52,22 @@
   align-items: center;
 }
 .dropbtn {
-  padding: 16px 0;
+  padding: 16px 20px;
   font-weight: bold;
   font-size: 16px;
   line-height: 1;
+  font-family: inherit;
   text-decoration: none;
   color: #251F47;
   background: none;
   border: none;
   cursor: pointer;
+  border-radius: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+.dropbtn:hover {
+  background-color: #0D7C66;
+  color: white;
 }
 .dropdown-content {
   display: none;
@@ -83,26 +91,14 @@
   background-color: #0D7C66;
   color: white;
 }
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 
-@media (max-width: 768px) {
-  .site-header .container {
-    flex-wrap: wrap; /* 允許項目換行 */
-    justify-content: center; /* 居中對齊 */
-  }
-
-  .logo-link {
-    margin-bottom: 10px; /* 在小螢幕上 logo 下方留一些空間 */
-  }
-
-  .nav-links {
-    width: 100%; /* 導航連結佔滿整行 */
-    justify-content: center; /* 導航連結居中 */
-    gap: 15px; /* 縮小間距 */
+@media (min-width: 851px) {
+  .dropdown:hover .dropdown-content {
+    display: block;
   }
 }
+
+
 
 /* 漢堡按鈕預設隱藏，手機顯示 */
 .menu-toggle {
@@ -118,20 +114,91 @@
 
 
 /* === 手機選單響應式設計 === */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
+  .site-header .container {
+    position: relative;
+  }
+  
+  /* 禁用桌面版 hover 效果 */
+  .dropdown:hover .dropdown-content:not(.show) {
+    display: none !important;
+  }
   /* 導覽列本體樣式 */
   .nav-links {
     display: none;
     flex-direction: column;
     background-color: #C9C6EC;
     position: absolute;
-    top: 60px;
-    right: 16px;
+    top: 100%;
+    left: 0;
+    right: 0;
     padding: 1rem;
-    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     z-index: 999;
-    width: auto;
-    max-width: 300px;
+    gap: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* 確保 dropdown 在手機版是垂直堆疊 */
+  .nav-links .dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .nav-links a {
+    padding: 12px 16px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* 手機版 People 按鈕樣式 */
+  .dropdown .dropbtn {
+    background: none;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 12px 16px;
+    color: #251F47;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* 手機版 People 下拉選單容器 */
+  .dropdown {
+    width: 100%;
+  }
+  
+  /* 手機版下拉選單樣式 */
+  .dropdown-content {
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    min-width: auto;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .dropdown-content.show {
+    display: flex !important;
+  }
+  
+  .dropdown-content a {
+    padding: 8px 16px;
+    text-align: center;
+    color: #251F47;
+    font-weight: normal;
+    text-decoration: none;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #0D7C66;
+    color: white;
+    transition: background-color 0.2s, color 0.2s;
   }
 
   .nav-links.show {
@@ -156,35 +223,7 @@
     box-shadow: none;
     padding: 0;
     margin: 0;
+    min-width: auto;
   }
 
-  /* 手機版 People 主按鈕 */
-  .dropdown .dropbtn {
-    background: none;
-    border: none;
-    text-align: left;
-    font-weight: bold;
-    padding: 0;
-    color: #251F47;
-    cursor: pointer;
-    width: 100%;
-  }
-
-  /* 手機版下拉子選單樣式 */
-  .mobile-submenu {
-    display: none;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    padding-left: 1rem;
-  }
-
-  .mobile-submenu a {
-    text-decoration: none;
-    color: #251F47;
-  }
-
-  .mobile-submenu.show {
-    display: flex;
-  }
 }
