@@ -1,15 +1,19 @@
 # Sample members data
-- name: Lin, Mong-Ru
+- name: 車薇 Che, Wei
   role: Research Assistant
-  image: lin-mongru.jpg
-  bio:   The website builder
+  image: 車薇.jpg
 
-- name: Lin, Mong-Ru
+- name: 李承彥 Lee, Cheng-Yen
   role: Research Assistant
-  image: lin-mongru.jpg
-  bio:   The website builder
+  image: 李承彥.jpeg
 
-- name: Lin, Mong-Ru
+- name: 周子辰 Chou, Tzu-Chen
   role: Research Assistant
-  image: lin-mongru.jpg
-  bio:   The website builder
+  image: 周子辰.JPG
+
+
+- name: 林孟儒 Lin, Mong-Ru
+  role: Research Assistant
+  image: 林孟儒.jpg
+
+

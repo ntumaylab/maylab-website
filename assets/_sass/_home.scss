@@ -7,7 +7,7 @@
 
   .swiper {
     width: 100%;
-    height: 400px;
+    height: 450px;
     overflow: hidden;
     
     @media (max-width: 768px) {
@@ -113,7 +113,7 @@
 }
 
 .news-preview {
-  margin-top: 50px; // 給 news section 一些頂部間距
+  margin-top: 40px; // 給 news section 一些頂部間距
   
   .news-cards {
     display: grid;
