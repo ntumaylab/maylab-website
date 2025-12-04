@@ -1,23 +1,45 @@
 ---
 layout: default
 ---
-<article class="post">
-  <h1>{{ page.title }}</h1>
-  <p class="date">{{ page.date | date: "%B %d, %Y" }}</p>
 
-  <div class="post-content-body"> 
+<article class="post" aria-labelledby="post-title" id="{{ page.title | slugify }}">
+  <!-- Breadcrumb Navigation -->
+  <nav class="post-breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/news/' | relative_url }}">News</a></li>
+      <li aria-current="page">{{ page.title | truncate: 50 }}</li>
+    </ol>
+  </nav>
+
+  <!-- Post Header with Improved Hierarchy -->
+  <header class="post-header">
+    <div class="post-meta">
+      {% if page.date %}
+        <time class="post-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+      {% endif %}
+    </div>
+    
+    <h1 id="post-title">{{ page.title }}</h1>
+    
+    {% if page.subtitle %}
+      <p class="subtitle" aria-describedby="post-title">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
     {{ content }}
   </div>
 
-  {% if page.image %} 
-    <div class="post-image"> 
-      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}"> 
-    </div>
-  {% elsif page.banner %} 
-    <div class="post-image">
-      <img src="{{ page.banner | relative_url }}" alt="{{ page.title }}"> 
-    </div>
+  {% assign post_image = page.image | default: page.banner %}
+  {% if post_image %}
+    <figure class="post-image">
+      <img src="{{ post_image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+      {% if page.image_caption %}
+        <figcaption>{{ page.image_caption }}</figcaption>
+      {% endif %}
+    </figure>
   {% endif %}
-
-
 </article>

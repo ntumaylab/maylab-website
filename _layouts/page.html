@@ -2,14 +2,6 @@
 layout: default
 title: Page Title
 ---
-{%- comment -%}
-Accessibility and semantic fixes applied:
-- This layout assumes <main> and <h1> are handled in the parent layout (default.html), so no <main> here.
-- Subtitle is presented in a <p> with clear association to the title.
-- Added aria-labelledby to the <section> for accessibility.
-- .page-section receives a semantic id based on the slugged title for anchorability.
-- No redundant markup or trailing whitespace.
-{%- endcomment -%}
 <section 
   class="page-section" 
   aria-labelledby="page-title"

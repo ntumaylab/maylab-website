@@ -3,7 +3,7 @@
 .banner {
   position: relative;
   // 如果使用統一的 layout 結構，調整 margin-top
-  margin-top: 0; // 移除原本的 70px，讓 sticky header 正常工作
+  margin-top: 0; // 讓 sticky header 正常工作
 
   .swiper {
     width: 100%;
@@ -67,30 +67,50 @@
     }
   }
 
-  .slide-left,
-  .slide-right {
-    position: absolute;
+  /* Swiper navigation buttons */
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.35); /* 半透明深灰色 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 50%;
-    font-size: 2rem;
-    background: rgba(0, 0, 0, 0.3);
-    color: white;
+    transform: translateY(-50%);
     border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 2;
-    
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+    &::after {
+      font-size: 18px; /* 控制箭頭大小 */
+      font-weight: bold;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
     @media (max-width: 768px) {
-      font-size: 1.5rem;
-      padding: 8px;
+      width: 34px;
+      height: 34px;
+
+      &::after {
+        font-size: 14px;
+      }
     }
   }
 
-  .slide-left {
-    left: 10px;
+  .swiper-button-prev {
+    left: 16px;
   }
 
-  .slide-right {
-    right: 10px;
+  .swiper-button-next {
+    right: 16px;
   }
 
   .swiper-pagination {
@@ -171,8 +191,8 @@
         color: #251F47;
         width: 100%;
         display: -webkit-box;
-        line-clamp: 2;  // 加入標準屬性
-        -webkit-line-clamp: 2;  // 保留 WebKit 前綴
+        line-clamp: 2;  // 標準屬性
+        -webkit-line-clamp: 2;  // WebKit 前綴
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -187,8 +207,8 @@
         width: 100%;
         flex-grow: 1;
         display: -webkit-box;
-        line-clamp: 3;  // 加入標準屬性
-        -webkit-line-clamp: 3;  // 保留 WebKit 前綴
+        line-clamp: 3;  // 標準屬性
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -237,3 +257,4 @@
     margin-right: 0;
   }
 }
+

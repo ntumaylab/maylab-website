@@ -1,102 +1,119 @@
 
-# MAY LAB 網站維護與交接說明（純 GitHub 操作版）
+﻿# MAY LAB 網站維護指南
 
-🔗 網站網址：https://ntumaylab.github.io/maylab-website/  
-🔗 GitHub Repo：https://github.com/ntumaylab/maylab-website
+🔗 網站：https://ntumaylab.github.io/maylab-website/  
+🔗 Repo：https://github.com/ntumaylab/maylab-website
 
-本網站使用 GitHub Pages + Jekyll 建置，但日常維護（如新增新聞、編輯成員資訊）**可直接在 GitHub 網頁操作**，不需安裝開發工具。
+本專案使用 **Jekyll + GitHub Pages**。日後維護（新增 News、更新 Members 等）可直接在 GitHub 網頁版進行，不需要在本機安裝任何工具。
 
 ---
 
-## 📰 一、新增新聞文章（News）
+## 1. 專案結構概觀
 
-每篇新聞是一個 Markdown（.md）檔案，放在 `_posts/` 資料夾中，會顯示在 News 頁面及首頁輪播。
+| 路徑 | 說明 |
+| --- | --- |
+| `_layouts/` | Jekyll 頁面模板：`default`(通用框架)、`page`(一般單頁)、`home`(首頁)、`post`(新聞內文)。 |
+| `_includes/` | 可重複引用區塊：`header.html`、`footer.html`、新聞卡片、head meta 等。 |
+| `_data/` | YAML 資料：`team.yml` (Team Members)、`collaborators.yml` (合作夥伴)。 |
+| `_posts/` | News 文章，使用 `YYYY-MM-DD-title.md` 命名，會自動顯示在首頁與 `/news/`。 |
+| `assets/_sass/` | SCSS 分模組：`_base.scss`、`_home.scss`、`_people.scss` … 最終由 `assets/css/main.scss` 匯入。 |
+| `assets/images/` | 所有圖片資源。新增圖片請放在此資料夾，依需要可新增子資料夾。 |
+| `people/` | People 區下的靜態頁面：`pi.html`、`team.html`、`collaborators.html`。 |
+| 其他單頁 | `about.html`、`research.html`、`publications.html`、`values.html` 等。 |
+| `_config.yml` | Jekyll 主設定（Base URL、Plugins、Pagination…）。 |
 
-### 📌 操作步驟：
+> ✅ Jekyll 會根據上述資料夾自動建置 `_site/`，不用手動修改 `_site`。
 
-1. 前往 [`_posts/`](https://github.com/ntumaylab/maylab-website/tree/main/_posts)
-2. 點選右上角 `Add file → Create new file`
-3. 命名檔案（格式為 `YYYY-MM-DD-title.md`），例如：
-2025-06-25-summer-interns.md
-4. 貼上範本內容，修改標題與內文：
-      ---
-      layout: post
-      title: "MAY Lab 歡迎暑期實習生加入！"
-      date: 2025-06-25
-      categories: news
-      banner: /assets/images/banner-interns.jpg
-      ---
-      MAY Lab 在今年夏天迎來了三位來自不同科系的實習生，他們將協助進行......
-   
-      Commit 儲存：填寫說明（如 新增 2025-06-25 新聞），點 Commit new file
+---
 
-若文章有圖片（如 banner）：
-前往 assets/images/
-點選 Add file → Upload files 上傳圖片
-圖片路徑需為 /assets/images/xxx.jpg
+## 2. 如何更新內容
 
-🧑‍🤝‍🧑 二、更新成員資訊（People）
-網站成員頁面包含三部分：
+### 2.1 News (首頁輪播 + /news 列表)
 
-類別	檔案	顯示方式
-PI 主持人	people/pi.html	單人介紹＋條列經歷
-團隊成員 Team	_data\team.yml	成員卡片
-合作夥伴 Collaborators	_data\collaborators.yml	條列清單
+1. 前往 [`_posts/`](https://github.com/ntumaylab/maylab-website/tree/main/_posts/) → `Add file → Create new file`。
+2. 檔名必須是 `YYYY-MM-DD-title.md`（日期不可在未來）。
+3. 參考範例：
+   ```md
+   ---
+   layout: post
+   title: "Workshop Recap: Tools for Emotional Resilience"
+   date: 2025-06-18
+   categories: news
+   banner: /assets/images/banner-workshop.jpg
+   ---
+   內文...
+   ```
+4. 若需要新的圖片，先到 [`assets/images/`](https://github.com/ntumaylab/maylab-website/tree/main/assets/images) → `Upload files` → 上傳後在 front‑matter 中引用，例如 `/assets/images/banner-workshop.jpg`。
+5. Commit message 建議描述內容，如 `Add 2025-06-18 workshop news`。
 
-📌 修改方式：
-點選對應 HTML或yml 檔案右上角 ✏️ 編輯
-編輯或新增內容（建議複製現有格式）
-若有圖片，請先上傳至 assets/images/
+### 2.2 People (PI / Team / Collaborators)
 
-## 🧪 四、更新研究主題（Research）
+| 區塊 | 檔案 | 編輯方式 |
+| --- | --- | --- |
+| PI (Principal Investigator) | `people/pi.html` | 直接修改 HTML，包含圖片、學歷列表等。 |
+| Team Members | `_data/team.yml` | 以 YAML 格式維護，支援 `name`、`role`、`image`、`bio` 等欄位。 |
+| Collaborators | `_data/collaborators.yml` | 每位夥伴有 `name`、`affiliation`。 |
 
-研究主題頁面位於 [`/research.html`](https://github.com/ntumaylab/maylab-website/blob/main/research.html)，內容以區塊方式介紹各研究方向。
+操作流程：
+1. 點選檔案 → 右上角 ✏️ → 編輯。
+2. 若新增成員圖片，先上傳至 `assets/images/`。
+3. Commit message 例：`Update team.yml - add Amy`。
 
-### 📌 更新步驟：
+> RWD 會自動處理，不需手動調整 class。
 
-1. 前往 [`research.html`](https://github.com/ntumaylab/maylab-website/blob/main/research.html)，點右上角 ✏️ 編輯
-2. 找到各研究主題的 HTML 區塊，新增或修改標題與內文
-3. 若有配圖，請先將圖片上傳至 `/assets/images/research/`，並設定正確路徑
+### 2.3 About / Values / Research / Publications 等單頁
 
-### ✨ 研究主題區塊範例：
-```html
-<div class="research-item">
-  <img src="/assets/images/research/adhd.jpg" alt="Adult ADHD">
-  <h3>Adult ADHD</h3>
-  <p>Exploring how attention deficit symptoms affect adults in workplace settings, and the role of resilience in their job satisfaction.</p>
-</div>
+這些頁面都是 HTML 檔案。修改方式：
+1. 進入對應檔案（如 `about.html`）。
+2. 點 ✏️ 編輯 → 直接修改段落、標題或圖片。
+3. 研究頁若新增圖片，請放在 `assets/images/research/`。
+4. Publications 以 `<li>` 清單方式維護，可加入 `<strong>`、`<em>`、`<a>` 等標籤：
+   ```html
+   <li>
+     Chen, Y.-L. ... <em>Journal of Applied Psychology</em>.
+     <a href="https://doi.org/...">https://doi.org/...</a>
+   </li>
+   ```
 
+### 2.4 其他資源
 
-五、更新學術發表（Publications）
-發表紀錄頁面位於 /publications.html，內容以清單方式列出期刊論文、會議論文等。
+- `values.html`、`research.html` 等頁面統一透過 `layout: page` 呈現，樣式由 `_sass/_page.scss` 決定。
+- 若要調整全站樣式，請修改 `assets/_sass/` 下對應模組，並確認 `assets/css/main.scss` 有匯入。
 
-📌 更新步驟：
-前往 publications.html
+---
 
-點右上角 ✏️ 編輯
+## 3. 常見問題與注意事項
 
-在對應類別（例如 Journal Papers / Conference Papers）底下新增 <li> 清單項目
+| 狀況 | 解法 |
+| --- | --- |
+| 更新後網站沒變 | GitHub Pages 通常 1–2 分鐘內更新，稍待再 `Ctrl+Shift+R` 強制重整。 |
+| 圖片不顯示 | 路徑要以 `/assets/images/...` 開頭，且檔名區分大小寫。 |
+| News 沒出現 | 檔名日期格式錯誤、日期設定在未來、或 front-matter 缺 `categories: news`。 |
+| 排版跑掉 | 複製 HTML 時確認標籤有完整開合，建議沿用現有區塊的結構。 |
+| 文章突然消失 | Jekyll 預設不顯示未來日期的 post，請把 `date` 改為當天或過去日期。 |
 
-可使用 HTML 格式標註作者、連結、期刊等資訊
+### Commit / PR 建議
+- 任何調整請寫清楚 Commit 訊息（例：`Fix header navigation hover`）。
+- 若維護者習慣 PR，也可在 GitHub 建立 PR 讓同伴檢閱後再合併。
 
-✨ 發表紀錄範例：
-<li>
-  Chen, A., & Wang, B. (2025). <strong>Resilience as a Moderator in Adult ADHD Job Outcomes</strong>. <em>Journal of Applied Psychology</em>. <a href="https://doi.org/xxxx">https://doi.org/xxxx</a>
-</li>
+### 圖片與素材
+- 建議依類別建立子資料夾（如 `assets/images/research/`、`assets/images/team/`）。
+- 圖片檔名使用英文/數字，避免空白與特殊符號。
 
+---
 
-🛠️ 三、常見問題與排查
-問題	解法
-🔁 GitHub 上更新後網站沒變	通常 1 分鐘內會自動更新，請稍等再重新整理網站（Ctrl + Shift + R）
-🖼️ 圖片沒出現	確認圖片已上傳至 /assets/images/，且路徑正確（開頭需加 /）
-📰 新聞沒出現在網站上	檔名格式錯誤（必須是 YYYY-MM-DD-title.md），或日期設成未來
-🚫 頁面排版亂掉	複製 HTML 結構時遺漏標籤，請參考現有範例格式
-📆 日期設錯導致文章消失	Jekyll 預設不顯示「未來日期」的文章，請使用當天或過去日期
+## 4. 若要進階開發（選擇性）
 
-📌 建議與備註
-📁 圖片分類建議：
+若未來維護者要在本地開發，你可以：
 
-📝 每次編輯請寫明 commit 訊息，如：
-    新增團隊成員 Amy
-    新增新聞 2025-06-25
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+但**一般內容維護**（新增 News / 更新 Team / 調整頁面文字）只需使用 GitHub Web 介面即可，無需本地開發環境。
+
+---
+
+如有新的維護流程或頁面結構變更，記得同步更新本 README，讓下一位維護者能快速上手。祝維護順利！ 🙌
 

@@ -13,7 +13,8 @@
 .site-footer .container {
   display: flex;
   flex-wrap: wrap; /* 允許在小螢幕上換行 */
-  justify-content: space-around; /* 均勻分佈內容 */
+  justify-content: space-between; /* 兩側對齊，中間留白 */
+  align-items: flex-start;
   // max-width: 1200px; /* 這個現在由 _base.scss 中的 .container 定義 */
   // margin: 0 auto; /* 這個現在由 _base.scss 中的 .container 定義 */
   gap: 30px; /* 各區塊之間的間距 */
@@ -84,6 +85,8 @@
   padding-top: 20px; /* 統一為新版較大的上內邊距 */
   border-top: 1px solid rgba(37, 31, 71, 0.2); /* 調整為適合淺色背景的深色邊框，稍微透明 */
   color: #333333; /* 版權文字顏色使用您的原有設定 */
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 /* 響應式調整 */

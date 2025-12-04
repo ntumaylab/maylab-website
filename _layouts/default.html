@@ -7,9 +7,13 @@
   {% include header.html %}
 
   <main id="main-content" class="page-container" tabindex="-1">
-    <div class="container">
+    {% if page.layout == 'post' %}
       {{ content }}
-    </div>
+    {% else %}
+      <div class="container">
+        {{ content }}
+      </div>
+    {% endif %}
   </main>
 
   {% include footer.html %}

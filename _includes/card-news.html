@@ -1,27 +1,11 @@
 <!-- _includes/card-news.html -->
-{%- assign layout_type = include.layout | default: 'grid' -%}
+{% assign layout_type = include.layout | default: 'grid' %}
 
-<!-- 
-Refactor & Issues found:
 
-- <a> should not be a direct parent of <div> (invalid HTML).
-- <img> requires a more descriptive alt for accessibility. Consider post title.
-- Card structure should use <article> for accessibility.
-- <a> should wrap only focusable/content, or the entire card; best as block link.
-- Add aria-label or other cues for screen readers if card visual context is missing.
-- Date should be in <time> with a machine-readable datetime attribute.
-- Recommend visually hidden title if needed for a11y, but title/heading works.
-- Remove unnecessary empty newlines.
--->
-
-<article class="card-news {% if layout_type == 'list' %}card-news--list{% else %}card-news--grid{% endif %}">
-  <a href="{{ include.post.url | relative_url }}" class="card-news-link" aria-label="Read more: {{ include.post.title | escape }}">
+<a href="{{ include.post.url | relative_url }}" class="card-news-link"> 
+  <div class="card-news {% if layout_type == 'list' %}card-news--list{% else %}card-news--grid{% endif %}">
     <div class="card-news__image">
-      <img 
-        src="{{ include.post.image | default: '/assets/images/default-banner.jpg' | relative_url }}" 
-        alt="{{ include.post.title | escape }} featured image"
-        loading="lazy"
-      >
+      <img src="{{ include.post.image | default: '/assets/images/default-banner.jpg' | relative_url }}" alt="News image">
     </div>
     <div class="card-news__content">
       <h3 class="card-news__title">
@@ -34,9 +18,7 @@ Refactor & Issues found:
           {{ include.post.content | strip_html | truncate: 100 }}
         {% endif %}
       </p>
-      <time class="card-news__date" datetime="{{ include.post.date | date_to_xmlschema }}">
-        {{ include.post.date | date: "%B %d, %Y" }}
-      </time>
-    </div>
-  </a>
-</article>
+      <p class="card-news__date">{{ include.post.date | date: "%B %d, %Y" }}</p>
+      </div>
+  </div>
+</a> 

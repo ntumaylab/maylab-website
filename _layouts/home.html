@@ -3,71 +3,66 @@
 <head>
   {% include head.html %}
   <!-- Swiper CSS - only needed on homepage -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-        integrity="sha384-p7T6jzJiV8PUXAFbhUL8EnkD5v3t02hYeuAt4+QAivYPClKLmU8PtIp44h4UAnT7"
-        crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body class="layout-home">
   {% include header.html %}
 
-  <main class="page-container">
+  <main id="main-content" class="page-container" tabindex="-1">
     <!-- Swiper Banner Section with Jekyll Posts -->
-    <section class="banner" aria-label="Banner carousel with featured articles">
+    <section class="banner" aria-labelledby="homepage-banner-title">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           {% for post in site.posts limit:3 %}
           <div class="swiper-slide">
-            <a href="{{ post.url | relative_url }}" tabindex="0" aria-label="{{ post.title }}">
+            <a href="{{ post.url | relative_url }}">
               <img 
                 src="{{ post.banner | default: '/assets/images/default-banner.jpg' | relative_url }}" 
                 alt="{{ post.title | escape }}" 
                 loading="lazy"
-                width="1200" height="400"
-                style="aspect-ratio: 3/1; object-fit: cover;"
               />
               <div class="banner-text">
-                <h2 class="swiper-title">{{ post.title }}</h2>
-                <p>{{ post.excerpt | strip_html | truncate: 80 }}</p>
+                <h2 id="homepage-banner-title" class="visually-hidden">Featured Posts</h2>
+                <h3>{{ post.title }}</h3>
+                <p>
+                  {{ post.excerpt | strip_html | truncate: 80 }}
+                </p>
               </div>
             </a>
           </div>
           {% endfor %}
         </div>
         <!-- Pagination Dots -->
-        <div class="swiper-pagination" aria-label="Carousel pagination"></div>
-        <!-- Optionally add navigation if Swiper config is using navigation -->
-        <button class="swiper-button-prev" aria-label="Previous slide"></button>
-        <button class="swiper-button-next" aria-label="Next slide"></button>
+        <div class="swiper-pagination" aria-label="Banner Pagination"></div>
+        <!-- Optional: Add Prev/Next Buttons for Accessibility -->
+        <button class="swiper-button-prev" aria-label="Previous Banner"></button>
+        <button class="swiper-button-next" aria-label="Next Banner"></button>
       </div>
     </section>
 
     <!-- 最新消息區塊 -->
-    <section class="news-preview" aria-labelledby="latest-news-title">
-      <div class="container">
+    <div class="container">
+      <section class="news-preview" aria-labelledby="latest-news-title">
         <div class="page-title-group">
           <h2 id="latest-news-title">Latest News</h2>
         </div>
-        <div class="news-cards" role="list">
+        <div class="news-cards">
           {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
           {% for post in sorted_posts limit:6 %}
-            <div role="listitem">
-              {% include card-news.html post=post layout="grid" %}
-            </div>
+            {% include card-news.html post=post layout="grid" %}
           {% endfor %}
         </div>
-        <div class="read-all-news-container">
-          <a href="{{ '/news/' | relative_url }}" class="read-all-news-button" aria-label="Read all latest news">Read More News</a>
+        <div class="read-all-news-container"> 
+          <a href="{{ '/news/' | relative_url }}" class="read-all-news-button">Read More News</a>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   {% include footer.html %}
   
   <!-- Swiper JS - only needed on homepage -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" 
-          integrity="sha384-Ml4BkzFFyQm/Ww15Rmz3FWDQUM0K6ZjM2bwhosBeDFy5boS1kJeTmOX4g3b9+Xg8" 
-          crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const swiper = new Swiper(".mySwiper", {
@@ -84,13 +79,29 @@
           el: ".swiper-pagination",
           clickable: true
         },
+        // Accessibility
         a11y: {
+          enabled: true,
           prevSlideMessage: 'Previous slide',
           nextSlideMessage: 'Next slide',
-          slideLabelMessage: '{{ forloop.index }} of {{ forloop.length }}',
+          paginationBulletMessage: 'Go to slide {{index}}'
         }
       });
     });
   </script>
+  <style>
+    /* Hide visually-hidden elements for accessibility (if not already defined globally) */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+      white-space: nowrap;
+    }
+  </style>
 </body>
 </html>

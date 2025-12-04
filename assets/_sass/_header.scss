@@ -38,12 +38,14 @@
   padding: 16px 20px;
   font-size: 16px;
   line-height: 1;
+  border-radius: 999px; /* 讓按鈕看起來更柔和 */
+  transition: background-color 0.2s, color 0.2s, transform 0.15s ease;
 }
 .nav-links a:hover {
   background-color: #0D7C66;
   color: white;
-  border-radius: 0;
-  transition: background-color 0.2s, color 0.2s;
+  border-radius: 999px;
+  transform: translateY(-1px);
 }
 
 .dropdown {
@@ -62,22 +64,28 @@
   background: none;
   border: none;
   cursor: pointer;
-  border-radius: 0;
-  transition: background-color 0.2s, color 0.2s;
+  border-radius: 999px;
+  transition: background-color 0.2s, color 0.2s, transform 0.15s ease;
 }
 .dropbtn:hover {
   background-color: #0D7C66;
   color: white;
+  border-radius: 999px;
+  transform: translateY(-1px);
 }
 .dropdown-content {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
+  transform: translateX(0);
   background-color: #C9C6EC;
   min-width: 200px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   z-index: 1000;
+  border-radius: 10px;
+  overflow: hidden; /* 讓子選單項目的圓角一致 */
+  margin-top: 0;
 }
 .dropdown-content a {
   display: block;
@@ -93,8 +101,22 @@
 }
 
 @media (min-width: 851px) {
-  .dropdown:hover .dropdown-content {
+  .dropdown-content {
+    left: 50%;
+    transform: translate(-50%, 0);
     display: block;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  .dropdown.is-open .dropdown-content,
+  .dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
   }
 }
 
