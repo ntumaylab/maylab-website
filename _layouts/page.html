@@ -2,16 +2,26 @@
 layout: default
 title: Page Title
 ---
-<section class="page-section"> 
-  <div class="page-title-group"> 
-    <h2>{{ page.title }}</h2>
+{%- comment -%}
+Accessibility and semantic fixes applied:
+- This layout assumes <main> and <h1> are handled in the parent layout (default.html), so no <main> here.
+- Subtitle is presented in a <p> with clear association to the title.
+- Added aria-labelledby to the <section> for accessibility.
+- .page-section receives a semantic id based on the slugged title for anchorability.
+- No redundant markup or trailing whitespace.
+{%- endcomment -%}
+<section 
+  class="page-section" 
+  aria-labelledby="page-title"
+  id="{{ page.title | slugify }}"
+>
+  <div class="page-title-group">
+    <h2 id="page-title">{{ page.title }}</h2>
     {% if page.subtitle %}
-      <p class="subtitle">{{ page.subtitle }}</p>
+      <p class="subtitle" aria-describedby="page-title">{{ page.subtitle }}</p>
     {% endif %}
   </div>
-
-  <div class="page-content"> 
+  <div class="page-content">
     {{ content }}
   </div>
 </section>
-

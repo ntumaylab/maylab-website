@@ -6,10 +6,9 @@
       <p>Something we want to say.</p>
     </div>
 
-
     <div class="footer-section footer-contact">
       <h3>Contact Us</h3>
-      <p><strong>Address</Address>:</strong> 台北市大安區羅斯福路四段1號</p>
+      <p><strong>Address:</strong> 台北市大安區羅斯福路四段1號</p>
       <p><strong>Email:</strong> <a href="mailto:info@maylab.org">info@maylab.org</a></p>
       <p><strong>Phone:</strong> +886-2-XXXX-XXXX</p>
     </div>
@@ -21,65 +20,13 @@
   </div>
 </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const peopleToggle = document.querySelector('.dropbtn');
-    const dropdownContent = document.querySelector('.dropdown-content');
+{%- comment -%}
+Proposed file structure for modular, maintainable JavaScript:
+  assets/js/
+    layout/
+      header-menu.js  <-- Handles header/main/navigation menu & dropdown
+{%- endcomment -%}
 
-    // 主選單切換（漢堡）
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', function () {
-        navLinks.classList.toggle('show');
-        // 關閉主選單時同時關閉子選單
-        if (!navLinks.classList.contains('show') && dropdownContent) {
-          dropdownContent.classList.remove('show');
-        }
-      });
-    }
-
-    // People 子選單切換（手機版和觸控裝置）
-    if (peopleToggle && dropdownContent) {
-      peopleToggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        if (window.innerWidth <= 850) {
-          dropdownContent.classList.toggle('show');
-        } else {
-          if (dropdownContent.style.display === 'block') {
-            dropdownContent.style.display = 'none';
-          } else {
-            dropdownContent.style.display = 'block';
-          }
-        }
-      });
-    }
-
-    // 點擊選單外區域關閉選單
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.site-header')) {
-        if (navLinks) navLinks.classList.remove('show');
-        if (dropdownContent) {
-          dropdownContent.classList.remove('show');
-          dropdownContent.style.display = 'none';
-        }
-      }
-    });
-
-    // 視窗大小改變時重置選單狀態
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 850) {
-        if (navLinks) navLinks.classList.remove('show');
-        if (dropdownContent) {
-          dropdownContent.classList.remove('show');
-          dropdownContent.style.display = '';
-        }
-      }
-    });
-  });
-</script>
-
-
+<!-- Load the modular JS file. Add `defer` for fast parsing. -->
+<script src="{{ '/assets/js/layout/header-menu.js' | relative_url }}" defer></script>
 
