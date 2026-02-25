@@ -75,22 +75,28 @@
   color: #251F47;
   text-align: left; 
 }
-
 .pi-profile {
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
   align-items: flex-start;
   margin: 32px auto 40px;
-  padding: 0 16px;
-  max-width: 960px; /* 與一般 page 內容寬度一致 */
-  
+  padding: 30px; 
+  max-width: 960px;
+
+  background-color: #fff;         
+  border: 1px solid #eee;        
+  border-radius: 12px;           
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05); 
+
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
+    padding: 20px; 
   }
 }
+
 .pi-photo {
   width: 240px;
   max-width: 100%;
