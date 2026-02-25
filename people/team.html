@@ -1,8 +1,24 @@
 ---
 layout: page
-title: Team Members
+title: PEOPLE
 ---
+<section class="pi-profile">
+  <img src="{{ '/assets/images/陳彥伶.JPG' | relative_url }}" alt="Chen Yen-Ling" class="pi-photo">
+  <div class="pi-info">
+    <h2><span class="pi-name-tag">陳彥伶 Chen, Yen-Ling</span></h2>
+    <p class="pi-role">Yen-Ling is an Assistant Professor in the Department of Psychology at National Taiwan University. She received her B.A. in Psychology from National Taiwan University and Ph.D. in Clinical Psychology from the University of Nevada, Las Vegas after completing her predoctoral internship at the University of California, Davis (UC Davis) Medical Center (Trauma-Adolescent Mental Illness Track). She then completed her postdoctoral training at the UC Davis Early Psychosis Programs within the Department of Psychiatry and Behavioral Sciences. She currently serves as the International Affairs Coordinator of the American Psychological Association Division 5 and the Chair of Taiwan Psychology Network.</p>
+    
+    <a href="https://scholar.google.com/citations?hl=zh-TW&user=fS58zk8AAAAJ&view_op=list_works&authuser=1" target="_blank" style="text-decoration: none;">
+      <h3 style="color: #0D7C66; margin-top: 24px; cursor: pointer;">
+      Google Scholar <span style="font-size: 0.8em;">🔗</span>
+      </h3>
+    </a>
+  </div>
+</section>
 
+<hr style="margin: 40px auto; max-width: 960px; border: 0; border-top: 1px solid #eee;">
+
+<h2 style="text-align: center; color: #251F47; margin-bottom: 30px;">Lab Members</h2>
 <section class="team-grid">
   {% for member in site.data.team %}
     {% assign image_path = '/assets/images/' | append: member.image %}
@@ -12,4 +28,13 @@ title: Team Members
        bio=member.bio 
        image=image_path %}
   {% endfor %}
+</section>
+
+<section class="collaborators-list">
+  <h2 style="color: #251F47;">Collaborators</h2>
+  <ul>
+    {% for c in site.data.collaborators %}
+      <li><strong>{{ c.name }}</strong> – {{ c.affiliation }}</li>
+    {% endfor %}
+  </ul>
 </section>
