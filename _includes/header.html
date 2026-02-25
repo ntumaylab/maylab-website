@@ -4,23 +4,18 @@
       <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="MAY LAB Logo">
     </a>
 
-    <!-- 漢堡按鈕 -->
     <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
 
     <nav class="nav-links">
       <a href="{{ '/news/' | relative_url }}">News</a>
       <a href="{{ '/about.html' | relative_url }}">About</a>
-      <a href="{{ '/values.html' | relative_url }}">Values</a>
-      <div class="dropdown">
-        <button type="button" class="dropbtn">People</button>
-        <div class="dropdown-content">
-          <a href="{{ '/people/pi.html' | relative_url }}">Principal Investigator</a>
-          <a href="{{ '/people/team.html' | relative_url }}">Team Members</a>
-          <a href="{{ '/people/collaborators.html' | relative_url }}">Collaborators</a>
-        </div>
-      </div>
+      
+      <a href="{{ '/people.html' | relative_url }}">People</a>
+      
       <a href="{{ '/research.html' | relative_url }}">Research</a>
       <a href="{{ '/publications.html' | relative_url }}">Publications</a>
     </nav>
   </div>
 </header>
+
+
